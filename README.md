@@ -9,3 +9,4 @@ A little about me:
 - I am interested in learning about LeBron James
 
 A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
+![](https://tenor.com/du7cg3ne9dH.gif)
