@@ -21,6 +21,8 @@ A little about me:
 4. Stephen Curry
 5. Shaquille O'Neal
 
+This is the official NBA website with standings and stats: [NBA](https://www.nba.com/)
+
 This is how my brain works 24/7 ![lebron-james-lebron-screaming](https://github.com/user-attachments/assets/c36e358c-c192-4739-ac26-16d53be63590)
 
 A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
