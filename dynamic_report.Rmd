@@ -1,0 +1,82 @@
+---
+title: My dynamic report - Instagram feed observation
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+h2 {
+  color: #4A90E2;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+}
+
+p {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+```
+
+## Instagram feed observation
+
+Summary from explanation.R
+
+```{r}
+library(tidyverse)
+
+logged_data <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQnk8hcREoT0ZdnCZ9ggA_wKYoE-Cox-0sUCeL5Dk8BrYr1JZaDEiRny98otI3q9JSzA0LSfmqUWFWw/pub?gid=64788401&single=true&output=csv")
+
+csv_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQnk8hcREoT0ZdnCZ9ggA_wKYoE-Cox-0sUCeL5Dk8BrYr1JZaDEiRny98otI3q9JSzA0LSfmqUWFWw/pub?gid=64788401&single=true&output=csv"
+
+latest_data <- read_csv(csv_file) %>%
+  rename(timestamp = 1,
+         first_post_type = 2,
+         posts_liked = 3,
+         post_engagements = 4,
+         ad_engagements = 5)
+
+# Summary statistics for numeric variables
+summary(latest_data$posts_liked)
+summary(latest_data$post_engagements)
+
+# Find min, max, and mean values
+min_likes <- min(latest_data$posts_liked)
+max_likes <- max(latest_data$posts_liked)
+mean_likes <- mean(latest_data$posts_liked)
+
+paste("The minimum number of posts that were liked on Instagram was", min_likes)
+paste("The maximum number of posts that were liked on Instagram was", max_likes)
+paste("The mean for the number of posts that were liked on Instagram was", mean_likes)
+
+min_engagements <- min(latest_data$post_engagements)
+max_engagements <- max(latest_data$post_engagements)
+mean_engagements <- mean(latest_data$post_engagements)
+
+paste("The minimum number of post engagements on Instagram was", min_engagements)
+paste("The maximum number of post engagements on Instagram was", max_engagements)
+paste("The mean for the number of post engagements on Instagram was", mean_engagements)
+
+#Bar charts for first_post_type
+latest_data %>%
+  ggplot() +
+  geom_bar(aes(x = first_post_type), fill = "#962fbf") +
+  labs(title = "Frequency of First Post Types on Instagram",
+       caption = "Source: UOA and AUT students",
+       x = "Post Type",
+       y = "Count")
+
+#Bar chart for ad_engagements
+latest_data %>%
+  ggplot() +
+  geom_bar(aes(x = ad_engagements), fill = "#fa7e1e") +
+  labs(title = "Did Users Engage with Ads on Instagram?",
+       caption = "Source: UOA and AUT students",
+       x = "Ad Engagement",
+       y = "Count")
+
+```
