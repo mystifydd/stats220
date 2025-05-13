@@ -1,0 +1,60 @@
+---
+title: Instagram feed observation
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+```
+
+## Visualisation 1: Instagram Likes by Hour of Day
+
+![](plot1.png){alt="Line plot showing average Instagram likes across different hours of the day." width="80%"}
+
+The number of likes tends to increase during evening hours. This suggests that I’m more actively engaging with posts when I use Instagram between 10am to 4pm.
+
+## Visualisation 2: Ad Engagement by Device Type
+
+![](plot2.png){alt="Bar chart comparing whether I clicked on ads across devices like Phone, Laptop/PC, and Tablet/iPad." width="80%"}
+
+I only engaged with ads on phones and laptops. Tablets were used more passively, showing fewer engagements.
+
+## Visualisation 3: Post Type Frequency
+
+![](plot3.png){alt="Bar chart showing the most common types of first posts encountered on Instagram sessions." width="80%"}
+
+'Celebrity/influencer' content dominated, followed by 'Personal posts' and 'News posts'. This aligns with how the Instagram algorithm surfaces content I frequently interact with.
+
+
+
+
+
+
+
+
+
